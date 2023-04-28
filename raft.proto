@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package raft;
+
+service RaftService {
+  rpc StatusCheck (Request) returns (Response) {}
+  rpc GetData (Request) returns (Response) {}
+  rpc Voting (Request) returns (Response) {}
+}
+
+message Request {
+  int32 id = 1;
+  int32 status = 2;
+  int32 term_num = 3;
+  string logfile = 4;
+}
+
+message Response {
+  string message = 1;
+  int32 id = 2;
+  int32 term_num = 3;
+}
